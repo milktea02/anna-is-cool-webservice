@@ -17,6 +17,16 @@ async def issue_opened_event(event, gh, *args, **kwargs):
     message = f"Thanks for the report @{author}! I will look into it ASAP! (I'm a bot)."
     await gh.post(url, data={"body": message})
 
+@router.register("issue_comment", action="created")
+async def issue_opened_event(event, gh, *args, **kwargs):
+    """ Whenever an issue is opened, greet the author and say thanks."""
+
+    url = event.data["issue"]["comments_url"] + "/reactions"
+
+    reaction = "heart"
+
+    await gh.post(url, data={"content": reaction})
+
 async def main(request):
     # read the GitHub webhook payload
     body = await request.read()
