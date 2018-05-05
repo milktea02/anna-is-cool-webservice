@@ -12,6 +12,7 @@ async def issue_opened_event(event, gh, *args, **kwargs):
     """ Whenever an issue is opened, greet the author and say thanks."""
 
     url = event.data["issue"]["comments_url"]
+    print(url)
     author = event.data["issue"]["user"]["login"]
 
     message = f"Thanks for the report @{author}! I will look into it ASAP! (I'm a bot)."
@@ -22,6 +23,7 @@ async def issue_opened_event(event, gh, *args, **kwargs):
     """ Whenever an issue is opened, greet the author and say thanks."""
 
     url = event.data["issue"]["comments_url"] + "/reactions"
+    print(url)
 
     reaction = "heart"
 
