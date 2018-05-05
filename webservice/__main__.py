@@ -31,7 +31,9 @@ async def issue_opened_event(event, gh, *args, **kwargs):
 
     reaction = "heart"
 
-    await gh.post(url, data={"content": reaction})
+    await gh.post(url, 
+        accept = "application/vnd.github.squirrel-girl-preview+json", 
+        data={"content": reaction})
 
 async def main(request):
     # read the GitHub webhook payload
