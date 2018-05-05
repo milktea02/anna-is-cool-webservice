@@ -21,8 +21,12 @@ async def issue_opened_event(event, gh, *args, **kwargs):
 @router.register("issue_comment", action="created")
 async def issue_opened_event(event, gh, *args, **kwargs):
     """ Whenever an issue is opened, greet the author and say thanks."""
+    
+    ##     /repos/:owner/:repo/issues/comments/:id/reactions
+    ##      https://api.github.com/repos/milktea02/YGOCalc/issues/     6/comments/     reactions
 
-    url = event.data["issue"]["comments_url"] + "/reactions"
+
+    url = event.data["comment"]["url"] + "/reactions"
     print(url)
 
     reaction = "heart"
